@@ -283,37 +283,79 @@ With all of the variance reduction and approximations implemented, each case too
 \caption{\label{parametric_REH}The envelope formed by the spectra from all 176 cases considered (upper) and their figures of merit (lower) which is total current from 3 to 6 \AA{}.  The red band denotes the wavelength range which has been summed over to produce the totals shown in the lower plot.  Case000 is the case with the REH completely filled.}
 \end{figure}
 
-A similar independent study was done to determine the vertical dimensions of the REH.  In the vertical study, the opening width was fixed to be the nozzle opening width, and the back wall depth and side wall slope were varied.
+The geometry of the best-performing horizontal geometry is shown in figure \ref{case_horiz}.  The depth is 10 cm, the opening width is 12 cm, and the slope is 0.5.  This opening is as wide as the nozzle and almost tapers to a point at the maximum depth.  The maximum depth is 4 cm from the radial center of the cold source. 
+
+A similar independent study was done to determine the vertical dimensions of the REH.  In the vertical study, the opening width was fixed to be the nozzle opening width, and the back wall depth and side wall slope were varied.  First a coarse grid was used with six slopes ranging from 0.0-0.5 and four open heights from 4.0-8.0 cm for a total of 24 cases.  This study yielded that the best opening height was the maximum of 8 cm and that the best slope was somewhere between 0.1 and 0.2.  Then a 16-case study was done on the slope ranging from 0.1 to 0.25.  This yieded a best slope of XXX.  The geometry of this case is shown in Figure \ref{case_vert}.
 
 \begin{figure}[h]
 \begin{minipage}{11pc}
 \begin{center}
-\includegraphics[scale=0.4,trim={11.2cm 8cm 5cm 3cm},clip]{graphics/case077.pdf}
+\includegraphics[scale=0.4]{graphics/FINALREH_XY.eps}
 \end{center}
 \caption{\label{case_horiz}Horizontal cut of the cold source D$_2$ volume showing the best-performing horizontal geometry for the REH.}
 \end{minipage} \hfill%
 \begin{minipage}{11pc}
 \begin{center}
-\includegraphics[scale=0.4,trim={11.2cm 8cm 5cm 3cm},clip]{graphics/case021.pdf}
+\includegraphics[scale=0.4]{graphics/FINALREH_YZ.eps}
 \end{center}
 \caption{\label{case_vert}Vertical cut of the cold source D$_2$ volume showing the best-performing vertical geometry for the REH.}
 \end{minipage} 
-\end{figure}
+\end{figure} 
 
-
+Figure \ref{parametric_gain} shows the gain from the best performing REH geometry over an absent REH.  The maximum gain is 1.29 at 5.5 \AA{} and its average value from 3-6 \AA{} is 1.24.  Similar gains should be seen by all instruments in the SINQ guide hall.  The drop in gain after 5.5 \AA{} is suspected to be from the liquid D$_2$ cross section decreasing between 5.5 to 25 \AA{}, making it more transparent to colder neutrons and reducing the benefits of the REH.
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.45,trim={0cm 0cm 0cm 0cm},clip]{graphics/parametric_gain.pdf}
+\includegraphics[scale=0.45,trim={0cm 0cm 0cm 0cm},clip]{graphics/gains_geom.png}
 \end{center}
 \caption{\label{parametric_gain}The gain factor of the neutron guide exit current of best-performing REH geometry over the REH being absent.  The thick, red line is the simulation data smoothed over 15 bins.}
 \end{figure}
 
-The geometry of the best-performing case is shown in figure \ref{case_horiz}.  The depth is 10 cm, the opening width is 12 cm, and the slope is 0.5.  This opening is as wide as the nozzle and almost tapers to a point at the maximum depth.  The maximum depth is 4 cm from the radial center of the cold source.  
+\section{Material Changes}
 
-Figure \ref{parametric_gain} shows the gain from the best performing REH geometry over an absent REH.  The maximum gain is 1.29 at 5.5 \AA{} and its average value from 3-6 \AA{} is 1.24.  Similar gains should be seen by all instruments in the SINQ guide hall.  The drop in gain after 5.5 \AA{} is suspected to be from the liquid D$_2$ cross section decreasing between 5.5 to 25 \AA{}, making it more transparent to colder neutrons and reducing the benefits of the REH.
 
-\newpage
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.45]{graphics/xs.pdf}
+\end{center}
+\caption{\label{cross_sections}cross sections}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.45]{graphics/ScattAbs.pdf}
+\end{center}
+\caption{\label{scattabs}scatter to absorbtion ratios.}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.45]{graphics/best_cases.png}
+\end{center}
+\caption{\label{parametric_gain}Best cases}
+\end{figure}
+
+
+\section{Powr Deposition in the Cold Source}
+
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.45]{graphics/power_dep_xy_g.eps}
+\end{center}
+\caption{\label{power_horiz}gamma power}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.45]{graphics/power_dep_xy_n.eps}
+\end{center}
+\caption{\label{power_horiz}neutron power}
+\end{figure}
+
+
+
 \section{Conclusions}
 
 From this study, it can be concluded that the flux reconstruction method is at least self-consistent, and can speed up calculations significantly.  Furthermore, a near-optimal horizontal REH geometry has been determined.  The REH increases total exit current for wavelengths of 3-6 \AA{} by a factor of 1.24 on average. The peak gain is 1.29 at a wavelength of 5.5 \AA{}.

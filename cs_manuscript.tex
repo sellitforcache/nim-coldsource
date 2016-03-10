@@ -92,7 +92,7 @@
 \renewcommand{\eqref}{Eq.~\originaleqref}
 
 \hypersetup{colorlinks=true,
-  pdftitle={Neutron brightness of the liquid determium cold source measured from the ICON beamline at the Swiss Spallation Neutron Source (SINQ)},
+  pdftitle={Optimization of a New Liquid Deuterium Cold Neutron Moderator at the Swiss Spallation Neutron Source (SINQ)},
   pdfauthor={Ryan M. Bergmann, Masako Yamada, Tibor Reiss, Vadim Talanov, Michael Wohlmuther, Uwe Filges}}
 
 \journal{Nuclear Instruments and Methods in Physics Research Section A: Accelerators, Spectrometers, Detectors and Associated Equipment}
@@ -134,20 +134,18 @@
 \cortext[rmb]{Corresponding author. Tel.: +41.56.310.56.12.}
 
 \author{Masako Yamada}
-%\ead{masako.yamada@psi.ch}
-
 
 \author{Tibor Reiss}
-%\ead{tibor.reiss@psi.ch}
+
+\author{Christine Klasuer}
+
+\author{Vadim Talanov}
 
 \author{Michael Wohlmuther}
-%\ead{michael.wohlmuther@psi.ch}
 
 \author{Uwe Filges}
-%\ead{uwe.filges@psi.ch}
 
-\author{Ander Kaestner}
-%\ead{anders.kaestner@psi.ch} 
+\author{Emmanuaela Rantisou}
 
 
 \address{Paul Scherrer Institut, Villigen, Switzerland}
@@ -175,166 +173,165 @@ spallation \sep neutron \sep source \sep brightness \sep cold
 
 The Swiss Spallation Neutron Source (SINQ) is a spallation neutron source driven by a continuous 590 MeV proton beam at the Paul Scherrer Institut in Villigen, Switzerland.  The incoming protons impinge on a lead target cooled with heavy water, producing high energy neutrons.  These neutrons are moderated by the tank of D$_2$O surrounding the target.  The cold source is a 20 liter volume of liquid D$_2$ at approximately 25 K located within the D$_2$O moderator tank with its innermost face approximately 35 cm away from the center of the target.  It serves to further reduce the energies of the ``thermal'' neutrons coming from the D$_2$O tank into a regime that is more useful to instruments which receive neutrons from its surface.  
 
-There is an extended shutdown of SINQ ambitiously planned for 2018 which will provide an opportunity for changes to be made to the cold neutron source \cite{rueegg_icans}.  Any changes will require a large amount of calculations done to minimize risk and ensure good the proposed changes will benifit the facility and its users.  The brightness measureemtn presented in this paper is the first step in validating the computational models reuqired to carry out a sucessful upgrade.  
+There is an extended shutdown of SINQ ambitiously planned for 2018 which will provide an opportunity for changes to be made to the cold neutron source \cite{rueegg_icans}.  Any changes will require a large amount of calculations done to minimize risk and ensure good the proposed changes will benifit the facility and its users.  
 
-The brightness measurement was conducted on July 21, 2014 in the ICON beamline at SINQ.  ICON is the cold neutron imaging facility at the neutron spallation source SINQ. The beamline offers an aperture wheel to change beam intensity and collimation ratio, as well as large evaculated flight tubes to minimize losses from scattering in the air \cite{icon}.  ICON was chosen since it does not incorporate any neutron optics, has good collimation, and looks directly on the surface of the cold source.  This removes additional uncertainty associated with the current state of the neutron guides and the physics involved with neutron-refecltive surfaces.
+In the planned upgrade strategies, no changes to the surrounding aluminum and zirconium safety hulls will be made, and no changes to the insert tube structure will be made.  In other words, all changes must fit into the existing multi-walled insert geometry.  This paper presents a parametric study on changes to the physical dimensions of cold source and the predicted effects these changes have on the integral neutron flux in the neutron guides.
 
-\section{Experimental Setup}
-\label{sec:setup}
+\section{Re-entrant Hole}
 
-The layout of the experimental is shown in Figure \ref{fig:geom}, which is a horizonal cut of the MCNP model geometry.  The target and moderators are shown furthest to the right.  The vertical line is the shielding monolith boundary, which is mostly steel blocks.  The ICON bunker is to the left of the monolith, the walls of which are made of heavy concrete and are shown as rectangular blocks.  The velocity selector that is usually mounted on the monolith wall in the ICON bunker was removed for this measurement.
+The goal of a re-entrant hole (REH) is to remove scattering and absorbing material between the spot with the maximum cold neutron flux and the direction of interest.  In this case, this spot is at the center of the cold source and the direction of interest is towards the SINQ guide hall.  The REH is presently a five-sided box with the open face at the bottom.  It sits inside the D$_2$ volume directly next to the wall facing the guide hall.  Voiding this kind of REH relies on radiative heating to boil D$_2$ which in turn fills the REH cavity with vapor, pushing the liquid D$_2$ out.  Proposed plans include making the REH external, ensuring that it is not filled with liquid D$_2$.
 
-\begin{figure}[h!] 
-  \centering
-    \includegraphics[width=\textwidth]{graphics/geom_bw_labels.eps}
-     \caption{Geometry \label{fig:geom} }
-\end{figure}
+Calculations done prior to these changes predicted cold neutron fluence gains from 1.2 to 1.9, with gains increasing with wavelength \cite{atch_icans}. These increases have not been observed, and it is suspected that the REH is not fully voided \cite{voided}.  All future designs will have an external REH, which will decouple the fill level from radiation heating and ensure that the REH is never filled with liquid D$_2$.
 
-Figure \ref{fig:det} shows a photograph of the $^3$He detector with the iron pinhole collimator positioned in front of it before the large shielding blocks and sapphire crystals were positioned.
+\section{Simulation Geometry}
 
-\begin{figure}[h!] 
-  \centering
-    \includegraphics[width=\textwidth]{graphics/det.eps}
-     \caption{$^3$He detector with iron collimator. \label{fig:det}}
-\end{figure}
+Simulations for the optimization study were done using the Monte Carlo N-Particle code (MCNP) developed as Los Alamos National Laboratory (LANL).  Figure \ref{geom} shows a zoomed-in view of the important parts of the MCNP model geometry.  A CAD model of the neutron guide bundles was converted to MCNP geometry by the Monte Carlo Modeling Interface Program (MCAM) package and integrated into the model \cite{mcam}.  The target is made of lead rods with zircaloy cladding and is cooled by D$_2$O, the moderator tank is filled with D$_2$O, the cold source is liquid D$_2$, the nozzles are filled with a low-pressure helium mixture, and the shielding and neutron guide structure is steel.  All structural material in the moderator tank is an aluminum alloy (AlMg-3), which is shown in yellow in Figure \ref{geom}.  The cross sections used in the simulations were from the ENDF/B-VII.1 library.  Thermal scattering S($\alpha$,$\beta$) tables (continuous-energy when possible) were used for both moderators and structural materials within the moderator tank \cite{sab}.
 
-The principle components in the neutron path, listed in increasing distance from the detector during the measurement, were:
-
-\begin{center} \underline{In-bunker components}\end{center}
-\begin{enumerate}
-  \item Spherical $^3$He detector, 3.30 cm $\oslash$, sorrounded by 1 mm cadmium sheets on all sides except towards the pinhole collimator
-  \item Cadmium aperture, 1 mm $\oslash$, 1 mm thick, 1 mm from the detector surface
-  \item Iron pinhole collimator, 100 mm long, immediately after the cadmium aperture, surrounded by heavy concrete, lead, and polyethylene shielding
-  \item Sapphire crystals, 20x20 mm faces, 80 mm total thickness, within the heavy concrete, lead, and polyethylene shielding
-  \item Evacuated flight tubes with 1.0 mm thick aluminum faces, ~7410 mm total length 
-  \item Steel collimator, 50x50 mm aperature 7548 mm from detector
-\end{enumerate}
-\begin{center}\underline{In-pile components}\end{center}
-\begin{enumerate}[resume]
-  \item Moveable gadolinium circular aperature wheel, set to the largest opening of 80 mm $\oslash$
-  \item High energy shutters
-  \item Zapfen unit, 40x120 mm
-  \item D$_2$O moderator tank
-  \item Low pressure nozzle which pentrates the D$_2$O moderator tank, end size is 138x138 mm
-  \item Liquid deuterium cold source
-  \item Lead spallation target
-\end{enumerate}
-
-
-Since brightness/brilliance was to goal of the measurement, the solid angle seen by the detector is needed to normalize the spectra.  The cadmium sheet limits the sensitive region of the helium detector to a 1 mm diameter circle, and the the other items in the beam path create a system that limited the angular view of the detector.  Table \ref{tab:sa} shows the maximum solid angle of the various items in the neutron beam.  The values are the minimum of the item's self-collimation (due to its thickness) and the collimation of the system formed by the item and the hole in the cadmium sheet.  Figure \ref{fig:solid_angle} shows a cartoon of the collimation system formed by the items and the cadmium hole.  It can be seen that in the horizontal plane, the Zapfen opening (where the beamline opens into large nozzle in the moderator tank) is the limiting item.  In the vertical plane, the limiting item is the steel shielding blocks positioned before the chopper.  At 45 degrees, the aperture wheel is the limiting case.  These items are shown in the pinhole image calculated with MCNP and discussed in Section \ref{sec:sim}.
-
-\begin{figure}[h!] 
-  \centering
-    \includegraphics[width=\textwidth]{graphics/solid_angle.eps}
-     \caption{The limiting collimation system in the measurement in the horizontal plane (not to scale), and the crossing point where the point detector was place in the MCNP simulations. \label{fig:solid_angle}}
-\end{figure}
-
-\begin{table}
+\begin{figure}[h!]
 \begin{center}
-     \caption{Table of solid angles with the limiting member marked with boldface and a star (*).  \label{tab:sa} }
-\begin{tabular}{|l|r|r|r|}
-     \hline
-                   &     Horizontal  &     Vertical   &     Diagonal   \\
-     \hline
-     Fe Collimator &     6.9282E-04  &     6.9282E-04 &     6.9282E-04 \\
-     \hline 
-     Cadmium Hole  &     1.8403E-00  &     1.8403E-00 &     1.8403E-00 \\
-     \hline 
-     Sapphire      &     1.9781E-03  &     1.9781E-03 &     3.8449E-03 \\
-     \hline 
-     Steel         &     3.3167E-05  &     3.3167E-05 &     6.5574E-05 \\
-     \hline
-     Aperture      &     3.4016E-05  &     3.4016E-05 &\bf* 3.4016E-05 \\
-     \hline
-     Tube          &     2.2597E-05  &\bf* 2.2597E-05 &    4.4867E-05  \\
-     \hline
-     Zapfen        &\bf* 2.0707E-05  &     4.6208E-05 &     6.6559E-05 \\
-     \hline
-     Nozzle        &     5.1293E-05  &     5.1293E-05 &     1.0215E-04 \\
-     \hline
-\end{tabular}
+\includegraphics[trim={9.2cm 8cm 4cm 8cm},clip]{graphics/geom2.pdf}
 \end{center}
-\end{table}
-
-
-\section{Simulations and Solid Angle Determination}
-\label{sec:sim}
-
-Simulations were done with MCNP6.1 and with ENDF/B-VII.1 data.  Thermal scattering data for the room temperature sapphire crystals were used \cite{sapp}, as were 77 K thermal scattering data for beryllium, 19 K data for ortho-/para-deuterium, 273 K data for heavy water, 273 K data for light water \cite{mcnp6}, and 25 K data for aluminum, and 25 K data for zirconium \cite{IKE}.  The aliumun and zirconium data are important for accurately simulating the transmission through the various hulls surrounding the deuterium in the cold source.  The model geometry of has already been shown in Figure \ref{fig:geom}, and was created to be as true-to-life as possible.  The target in use during the measurement was ``target 10'', which is shown in Figure \ref{fig:target}. This target had a hemispherical beam entrance window, STIP samples, and some light water contamination in the inner cooling loop.  These features were modelled in the MCNP simulation \cite{target10}.
-
-\begin{figure}[h!] 
-  \centering
-    \includegraphics[width=0.25\textwidth,trim={5cm 0 5cm 0},clip]{graphics/target.eps}
-     \caption{Vertical cross section of the target MCNP model geometry. \label{fig:target}}
+\caption{\label{geom}A horizontal slice through the MCNP simulation geometry showing the target (magenta), moderator tank (blue), cold source (purple), nozzle (pink), and neutron guide entrance (grey with circle).}
 \end{figure}
 
-Since the detector is very far away from the neutron source, special methods had to be used in order to gather sufficient statistics in a reasonable amount of time.  A point detector is a ``next event'' estimator that scores a tally at every neutron collision event \cite{mcnp}.  The contribution to the tally is weighted by the probability of the neutron scattering into the direction of the detector point and travelling to the detector without colliding again (i.e. weight is rediced by the attentuation of the material in between).  
+\section{Variance Reduction}
 
-Using a point detector would be a reasonable solution if only cancluated the flux was desired, but the brightness also depends on the view able solid angle of the detector system.   The physical system responds to a view limited by the pinhole collimator and cadmium sheet, which produces a small, finite spot on detector surface.  A regular point detector would only see a single point of this view and wouldn't report any angular information needed for caluclating the brightness.  If the point detector were placed at the crossing point of the collimation system, it would see the full flux visible to the detector, but it would summed over all angles.  In order to calculate the solid angle visible, a ``pinhole radiography tally'' was used in MCNP.  This tally calculates contributions in the same way, but it projects the contibutions through the point onto an image plane.  If such a projection is placed behind all the items which limit the detector view, the solid angle visible to the detector can be calculated by summing the solid angle each pixel corresponds to.
+Two variance reduction methods were used in conjunction to perform the simulations in a reasonable amount of time.  First, mesh-based weight windows were generated based on the response of a point detector located inside the AMOR/SANS-I neutron guide.  The point detector was positioned 75 cm from the guide entrance, giving it an approximately two degree view towards the cold source.  The generated weight windows serve to increase the number of neutrons in regions that make large contributions to the point detector, which in this case is the cold source. In order to not bias the simulation, the weight windows cause neutrons entering the cold source to be split into many neutrons with a lower individual statistical weight.  
 
-Figure \ref{fig:pinhole_image} shows a pinhole radiography tally image generated at the upstream surface of the cadmium sheet with the pinhole placed at the horizontal collimation crossing point.  The Zapfen limits the view on the horizontal plane, so the hole in the cadmium lines up perfectly with projection of the Zapfen, confirming that the Zapfen is indeed the limiting member in the horizontal plane of the collimaiton system.  The other limiting objects are also projected onto the plane to show the planes where they limit the detector view.  They are shown as dashed colored lines in Figure \ref{fig:pinhole_image}.
+The second variance reduction method used was a DXTRAN (deterministic transport) sphere.    This tool is a non-physical sphere that is placed around the guide entrance that causes neutrons to be generated on its surface.  Whenever a neutron undergoes a scattering reaction, the probability of scattering into the sphere's direction is calculated, a line is traced from the scattering location to the sphere's surface, and a new neutron is generated at the surface with a weight reduced by the scattering probability and material attenuation.  The generated neutrons are then transported normally inside the sphere \cite{mcnp5,mcnp6}.  This method serves to preferentially scatter neutrons into the direction of the neutron guide instead of relying on probability to transport them there.
 
-\begin{figure}[h!] 
-  \centering
-    \includegraphics[width=\textwidth]{graphics/pinhole.eps}
-     \caption{The flux image created by a pinhole radiography tally in MCNP at the collimation crossing focal point.  The image plane is at upstream surface of the cadmium sheet.  The outlines show the projections of the limiting geometry through the pinhole: Grey=cadmium hole, blue=beam port, magenta=Zapfen, yellow=Gd aperture.  A horizontal gradient is also apparent. \label{fig:pinhole_image}}
+\section{Neutron Guide Response} 
+
+In conjunction with the variance reduction methods described in the previous section, an approximation to the neutron guides was also used.  McStas is another Monte Carlo code the has been developed specifically for neutron scattering experiments, and can simulate the neutron reflections that happen with neutron supermirrors.  It is solely used to simulate neutron guides and is unable to simulate the detailed physics involved in neutron moderation, however.  Since changing the source changes how the neutrons are moderated, MCNP, a code capable of simulating the relevant physics, was used.  A patch was developed at Oak Ridge National Laboratory (ORNL) and PSI that implements the McStas guide reflectivity model in MCNPX 2.5.0 and 2.7.0 \cite{mcnp_reflectivity, EK_reflectivity}, but the model is analog and is not fully compatible with DXTRAN spheres.  If a neutron is sampled to \emph{not} reflect on a guide surface, it is transmitted into the next cell.  This means that neutron paths have to be sampled multiple times to account for any reflectivity losses, which slows the simulation down.  
+
+Some stability issues were also encountered while using the reflectivity patch in the same simulation as a DXTRAN sphere.  In order to ensure stable runs, the simulation was split into two parts.  First, a simulation was done where a surface source was written at the guide entrance surface.  In this first simulation, the DXTRAN sphere surrounds the guide entrance.  Any neutrons entering the guide were recorded and terminated.  This source was then used in a second simulation with the guide reflectivity activated and without the DXTRAN sphere.  This step transported the entering neutrons to the end of the guide where a tally was scored.  Again, this process slowed the simulation down since two MCNP simulations needed to be made for each case.  Thus, a guide response approximation was used to eliminate the need for a second run, which simply served to transport the neutrons to the end of the guide.
+
+
+\subsection{Guide Reflectivity}
+
+The guide reflectivity model implemented in MCNP is identical to that used in McStas \cite{mcnp_reflectivity}.  The reflectivity curve for the current AMOR/SANS-I guide is shown in Figure \ref{SINQ_reflectivity} and the reflectivity equation and parameter values shown in Eq. \ref{eq:ref} \cite{mcstas}.  The values shown are the same for all the straight guides in the SINQ hall \cite{SINQ_guide_values}.  The dimensions of the guides are slightly different, however, as can be seen from their horizontal cross sections in Figure \ref{geom}.
+
+\begin{figure}[h]
+\begin{minipage}{14pc}
+\includegraphics[scale=.4]{graphics/refl.pdf}
+\caption{\label{SINQ_reflectivity} The reflectivity curve of the current SINQ neutron guides.}
+\end{minipage}\hspace{5pc}%
+\begin{minipage}{11pc}
+\begin{multline}\label{eq:ref}\scriptsize
+R(Q) = 
+\begin{cases}
+    \mbox{if } Q > Q_c : \\
+    \frac{R_0}{2}\left\{  1 - \tanh\left(  \frac{Q - m Q_c}{W}\right) \right\}\{1-\alpha(Q-Q_c)\} \\
+    \\
+    \mbox{if } Q \leq Q_c :\\
+    R_0 \\
+\end{cases} \\ \\ \\
+\begin{tabular}{c c c}
+$R_0=0.995$ & $Q_c=2.17\times10^{-2}\AA^{-1}$ & $m=1.9$ \\ 
+$\alpha=6.40 \AA$ & $W=4.0\times10^{-3} \AA^{-1}$ 
+\end{tabular} \\
+\end{multline}
+\end{minipage} 
 \end{figure}
 
-From this image, it was deduced that the total solid angle visible to the detector was limited to $2.1363\times10^{-5}$ steradians.  The hole is fully illuminated (there are no spots on the where a radiography tally produced a zero result), so the area used to normalize the spectra is the area of the hole (7.85398$\times 10^{-3}$ cm$^2$).
+Since the neutron reflection probability is based on momentum transfer and the reflections are specular, the probability is determined by the incident neutron angle and energy.  If the guide is rectangular, the reflection probability will not change as the neutron travels down the guide since the reflection angle remains constant.  These conditions mean that the exiting neutron current should be completely defined by the incident polar angle and energy of a neutron entering the guide.  The vertical and horizontal position in the guide entrance determines where neutrons exit the guide, but if the exit current is integrated over exit position, exit position becomes irrelevant and only the transmission probability matters.
 
+\subsection{Reconstruction}
 
-\section{Detector Efficiency}
-\label{subsec:eff}
+In order to approximate the spatially-integrated neutron spectrum at the guide exit, a number of fixed-source runs of MCNPX were done as precalculations to the parametric study.  An evenly-distributed source was defined at the entrance surface of the guide that emits neutrons in a polar angle bin $1/8^\circ$ wide and logarithmically in energy (to ensure low energies are sampled well).  The exiting current at the end of the guide was tallied and divided by the entrance current to yield a transfer function in energy for the polar angle of the source.  This was done for 0 to 7.5 degrees of polar angle to yield the set of 60 functions shown in figure \ref{xfer_func}.  
 
-The efficiency curve of the helium detector was also measured and compared to calculated curves.  Curves were calculated using a 1D model and 1/v cross sections as well as with a detailed MCNP model of the helium detector \cite{bonner_manual}.  The 1D model efficiency is shown in Eq. \ref{eqn:eff1}, where $\Sigma_{\textrm{stl}}$ is the stainless steel total macroscopic cross section, $\Sigma_{\textrm{He}}$ is the $^3$He absorbtion macroscopic cross section, $x_{\textrm{stl}}$ is the thickness of the detector's stainless steel shell, and  $D_{\textrm{stl}}$ is the diameter $^3$He volume.  The cross section wavelength dependence is shown in Eq. \ref{eqn:eff2}, where $a$ and $b$ are linear fit coefficients derived from cross section data.  
+%trim <left> <lower> <right> <upper>
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.25,trim={4cm 0.5cm 0cm 0cm},clip]{graphics/xfer_func.pdf}
+\end{center}
+\caption{\label{xfer_func}Set of transfer functions for a $m=2$ guide.}
+\end{figure}
 
-\begin{gather}
-     \label{eqn:eff1} \epsilon(\lambda) = \exp \left(-\Sigma_{\textrm{stl}}(\lambda) x_{\textrm{stl}}\right)[1-\exp(-\Sigma_{\textrm{He}}(\lambda) D_{\textrm{He}})] \\
-     \label{eqn:eff2} \Sigma_i(\lambda) = a_i\lambda+b_i
-\end{gather}
+Blue curves are those for incident angles that have an integer value of 0 degrees (e.g. 0.125, 0.250, etc.), green curves for 1, red curves for 2, and so on.  The set clearly shows that incident angles above 2 degrees make no contributions to wavelengths shorter than 8 \AA{} in the exit spectrum, and incident angles above 4 degrees make no contributions to wavelengths shorter than 16 \AA{}. 
 
-The efficieny curve was calculated from the MCNP model by directing a stream of neutrons in a 0.5 mm radius with a flat spectrum towards the midplane of the spherical detector, tallying the absorbtion reaction rate in $^{3}$He, then divding the absobtion rate by the source spectrum.  The measured efficiency curve was done at the BOA beamline at PSI, xxx MORE HERE.
+If neutrons are tallied at the guide entrance in the same polar and energy binning as the transfer functions, it can be multiplied by the set and summed over all incident angles to yield the integrated neutron spectrum at the guide exit.  This way, the reflectivity model can be eliminated from the transport runs and a good estimate of the exiting current can still be made.
 
-Figure \ref{fig:eff} shows the two calculated efficiency curves agaist the measured curve.  The MCNP curve agrees very well with the measured curve, and was used to produce the measured brightness spectrum in Section \ref{sec:results}.
+\subsection{Self-Consistency Test}
 
-\begin{figure}[h!] 
-  \centering
-    \includegraphics[width=\textwidth]{graphics/eff.eps}
-     \caption{The efficiency curves. \label{fig:eff} }
+In order to verify that the reconstruction method works as expected, a comparison was made to an exit spectrum calculated without using the approximation.  To calculate the exit spectrum, a surface source was first written at the guide entrance using a DXTRAN sphere. This surface source was then used in a second run with the guide reflectivity model activated.  During the second run, the entry and exit current was tallied.  The entry current was binned in polar angle according to the divisions in the precalculated transfer functions and was used to reconstruct the exit spectrum so it could be compared to the exit tally.   The results of the comparison are shown in Figure \ref{xfer_bench}.  The green line is the total, integrated neutron spectrum at the guide entrance, the blue line is the integrated exit current that was transported by the reflectivity model and tallied at the guide exit (the benchmark), and the red curve is the reconstructed exit spectrum.  The entrance spectrum shown in Figure \ref{xfer_bench} is integrated over all incoming angles, and shows a thermal spectrum due to contributions from the thermal D$_2$O tank.  If only the polar bins up to about 2 degrees (approximately the extent of the D$_2$ volume as view from the guide entrance) were integrated instead, the spectrum would have a cold peak as well.   The maximum error seen is about 70\% at 0.55 \AA{}, but decreases with energy and is almost always within the statistical error of the simulation.  The average 1-norm value (norm divided by number of bins) of the relative error is 7.8\%, and the average 2-norm value is 0.8\%.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.4]{graphics/xfer_bench.pdf}
+\end{center}
+\caption{\label{xfer_bench}The reconstructed guide exit current compared to the exit current calculated with a MCNP simulation with guide reflectivity activated.  A total set of 60 polar bins from 0 to 7.5 degrees was used.  The right axis is for the exit spectra and the left axis is for the entrance spectrum.  The lower plot shows the reconstruction relative error compared to the reflectivity simulation.  The green envelope is the 1-sigma relative error of the reflectivity simulation.}
+\end{figure}
+
+\section{REH Parametric Study in the Horizontal and Vertical Plane}
+
+The REH parametric study was done to investigate a wide range of geometries differing in the horizontal plane, where the guide width is smaller than the hole size and all the guides have different view angles.  Four REH depths (14, 10, 6, 2 cm), four opening widths (4, 8, 12, 16 cm), and eleven hole slopes (-0.5, -0.4, -0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5) were investigated in the study, totaling 176 cases. Figure \ref{parametric_geom} shows the parameters in relation to the cold source geometry.  During this study, the REH vertical dimensions were chosen to be the full width of the nozzle with a slightly tapering inward slope.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.4,trim={13cm 6cm 4cm 5cm},clip]{graphics/para_geom.pdf}
+\end{center}
+\caption{\label{parametric_geom}The geometric dimensions varied in the REH parametric study. ``A'' is the hole depth, ``B'' is the opening width, and ``C'' is the hole slope.}
+\end{figure}
+
+With all of the variance reduction and approximations implemented, each case took about one hour to run on a 144-core configuration on a computer cluster at PSI.  The spectra from all the cases are shown in the upper plot of Figure \ref{parametric_REH}, and their figures of merit are shown in the lower plot.  The figure of merit was chosen to be the total current exiting the AMOR/SANS-I guide six meters from the cold source surface from 3 to 6 \AA{} -- the wavelength band which is useful for most of the instruments in the guide hall \cite{instruments_wavelength}.  The parameters were varied in slope-width-depth order, with slope being the fastest varied parameter. Figure \ref{parametric_REH} has labeled, colored blocks in the lower plot to show which parameters are constant for that block.  Slope and opening width have the most effect on the exit current at large hole depths.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.26,trim={0cm 0cm 0cm 0cm},clip]{graphics/parametric_REH.pdf}
+\end{center}
+\caption{\label{parametric_REH}The envelope formed by the spectra from all 176 cases considered (upper) and their figures of merit (lower) which is total current from 3 to 6 \AA{}.  The red band denotes the wavelength range which has been summed over to produce the totals shown in the lower plot.  Case000 is the case with the REH completely filled.}
+\end{figure}
+
+A similar independent study was done to determine the vertical dimensions of the REH.  In the vertical study, the opening width was fixed to be the nozzle opening width, and the back wall depth and side wall slope were varied.
+
+\begin{figure}[h]
+\begin{minipage}{11pc}
+\begin{center}
+\includegraphics[scale=0.4,trim={11.2cm 8cm 5cm 3cm},clip]{graphics/case077.pdf}
+\end{center}
+\caption{\label{case_horiz}Horizontal cut of the cold source D$_2$ volume showing the best-performing horizontal geometry for the REH.}
+\end{minipage} \hfill%
+\begin{minipage}{11pc}
+\begin{center}
+\includegraphics[scale=0.4,trim={11.2cm 8cm 5cm 3cm},clip]{graphics/case021.pdf}
+\end{center}
+\caption{\label{case_vert}Vertical cut of the cold source D$_2$ volume showing the best-performing vertical geometry for the REH.}
+\end{minipage} 
 \end{figure}
 
 
 
-\section{Measured Brightness}
-\label{sec:results}
-
-Five measurements were done in total: centered in the beam port, +20 mm away from center (towards the target), -20 mm away from center (away from the target), centered with beryllium at 77 K in the beamline to show the 4 \AA bin, and without sapphire or beryllium.
-
-\begin{figure}[h!] 
-  \centering
-    \includegraphics[width=\textwidth]{graphics/brightness.eps}
-     \caption{Measured and simulated source brightness at ICON. \label{fig:brightness} }
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.45,trim={0cm 0cm 0cm 0cm},clip]{graphics/parametric_gain.pdf}
+\end{center}
+\caption{\label{parametric_gain}The gain factor of the neutron guide exit current of best-performing REH geometry over the REH being absent.  The thick, red line is the simulation data smoothed over 15 bins.}
 \end{figure}
 
-\section{Discussion}
-\label{sec:discussion}
+The geometry of the best-performing case is shown in figure \ref{case_horiz}.  The depth is 10 cm, the opening width is 12 cm, and the slope is 0.5.  This opening is as wide as the nozzle and almost tapers to a point at the maximum depth.  The maximum depth is 4 cm from the radial center of the cold source.  
 
+Figure \ref{parametric_gain} shows the gain from the best performing REH geometry over an absent REH.  The maximum gain is 1.29 at 5.5 \AA{} and its average value from 3-6 \AA{} is 1.24.  Similar gains should be seen by all instruments in the SINQ guide hall.  The drop in gain after 5.5 \AA{} is suspected to be from the liquid D$_2$ cross section decreasing between 5.5 to 25 \AA{}, making it more transparent to colder neutrons and reducing the benefits of the REH.
 
-
+\newpage
 \section{Conclusions}
-\label{sec:conclusions}
 
+From this study, it can be concluded that the flux reconstruction method is at least self-consistent, and can speed up calculations significantly.  Furthermore, a near-optimal horizontal REH geometry has been determined.  The REH increases total exit current for wavelengths of 3-6 \AA{} by a factor of 1.24 on average. The peak gain is 1.29 at a wavelength of 5.5 \AA{}.
 
+\section{Future Work}
 
-\section*{Acknowledgements}
-\label{sec:ack}
+The optimal horizontal dimensions of the REH have been determined, another study is needed to investigate REH sensitivity to changes in the vertical dimensions.  The effect the REH has on the neutron flux on the opposite side of the cold source will also be determined.  Different types of reflector materials and configurations will also be investigated.  The reflector sits behind the cold source (the side opposite the target), and reducing cold neutron losses in it may increase the guide exit current.  Adding a belt of liquid H$_2$ to produce a ``cold spot'' for focusing instruments will also be investigated.  In these studies, the flux reconstruction method will once again be used.
 
-This work was supported by Swiss National Science Foundation grant 200021\_150048/1
+A guide reflectivity patch for MCNP 6.1 will also be done.  Ideally, it will also include a switch to reduce neutron weight upon reflection instead of leaking non-reflected neutrons. This should help speed up in-beam calculations where this signal is of interest and not the noise.
 
+\section*{Aknowldegemnts}{
+
+Thank you to...
+
+This work was supported by Swiss National Science Foundation grant 200021\_150048/1.
 
 \section*{References}
-\bibliographystyle{elsarticle-num-names.bst}
-\bibliography{references}
+\bibliography{cs_manuscript}
 
 \end{document}
 
